@@ -1,0 +1,39 @@
+{
+  "name": "first-jdbc-connector",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "task.max": "1",
+
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url":"http://localhost:8081",
+    "value.converter.schema.registry.url":"http://localhost:8081",
+
+    "transforms": "createKey, setSchema",
+    "transforms.createKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+    "transforms.createKey.fields": "CustomerKey",
+    "transforms.setSchema.type": "org.apache.kafka.connect.transforms.SetSchemaMetadata$Value",
+    "transforms.setSchema.schema.name": "customerData",
+
+
+    "connection.url": "jdbc:sqlserver://192.168.43.157:1433/AdventureWorksDW2014",
+    "connection.user": "jco",
+    "connection.password": "fintrak10000000",
+    "dialect.name": "SqlServerDatabaseDialect",
+
+    "mode": "timestamp+incrementing",
+    "timestamp.column.name": "CustomerKey",
+    "incrementing.column.name": "CustomerKey",
+
+    "numeric.precision.mapping": true,
+    "numeric.mapping": "best_fit",
+
+    "query": "SELECT * FROM(SELECT CustomerKey, FirstName, LastName, Gender FROM DimCustomer) AS Customer_Records",
+    "table.type": "TABLE",
+
+    "poll.interval.ms": "5000",
+    "batch.max.rows": "100",
+    "topic.prefix": "customerRecords",
+    "db.timezone": "UTC"
+  }
+}

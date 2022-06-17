@@ -1,0 +1,39 @@
+{
+  "name": "jdbc-connector",
+  "config": {
+    "connector.class": ,
+    "task.max": ,
+
+    "key.converter": ,
+    "value.converter": ,
+    "key.converter.schema.registry.url":,
+    "value.converter.schema.registry.url":,
+
+    "transforms": ,
+    "transforms.createKey.type":,
+    "transforms.createKey.fields":,
+    "transforms.setSchema.type": ,
+    "transforms.setSchema.schema.name": ,
+
+
+    "connection.url": ,
+    "connection.user": ,
+    "connection.password": ,
+    "dialect.name": ,
+
+    "mode": ,
+    "timestamp.column.name": ,
+    "incrementing.column.name": ,
+
+    "numeric.precision.mapping": ,
+    "numeric.mapping": ,
+
+    "query": ,
+    "table.type": ,
+
+    "poll.interval.ms": ,
+    "batch.max.rows": ,
+    "topic.prefix": ,
+    "db.timezone":
+  }
+}
